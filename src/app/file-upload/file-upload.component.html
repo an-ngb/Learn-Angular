@@ -1,0 +1,30 @@
+<!-- <div class="text-center">
+  <input class="form-control" type="file" (change)="onChange($event)">
+  <button (click)="onUpload()" class="btn btn-success">Upload</button>
+</div> -->
+<!--
+
+<label for="images" class="drop-container" id="dropcontainer" style="margin-top: 10px;" *ngIf="show">
+  <span class="drop-title">Drop files here</span>
+  or
+  <input type="file" id="images" accept="image/*" required (change)="onChange($event)">
+</label>
+
+<form nz-form [formGroup]="form" class="upload-result-form" *ngIf="!show" style="margin-top: 10px;">
+  <input placeholder="{{show}}">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">
+        <fa-icon [icon]="faFilePen" [ngStyle]="{color: 'black'}" (click)="onUpload()" style="cursor: pointer;"></fa-icon>
+      </span>
+    </div>
+      <input formControlName="input" type="custom-file-input" class="form-control" placeholder="{{shortLink}}" [disabled]="true">
+  </div>
+</form> -->
+
+<nz-upload nzAction="http://localhost:8080/upload" (nzChange)="onChange($event)">
+<button nz-button style="margin-top: 10px;">
+  <span nz-icon nzType="upload"></span>
+  Click to Upload
+</button>
+</nz-upload>

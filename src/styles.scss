@@ -1,1 +1,222 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+@import "node_modules/ng-zorro-antd/ng-zorro-antd.min.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  max-width: 500px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 1px solid steelblue;
+  padding: 30px;
+  border-radius: 5px;
+}
+.btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}
+.btn:focus {
+  outline: none;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+
+.add-form{
+  margin-bottom: 40px;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.form-control label {
+  display: block;
+}
+
+.form-control input {
+  width: 100%;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+
+.form-control-check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-control-check label {
+  flex: 1;
+}
+
+.form-control-check input {
+  flex: 2;
+  height: 20px;
+}
+
+table th:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+table td:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.search-form{
+  margin-bottom: 40px;
+}
+
+.upload-result-form{
+  margin-bottom: 40px;
+}
+
+.ant-layout-header {
+  height: 64px;
+  padding: 0 50px;
+  color: rgba(0,0,0,.85);
+  line-height: 64px;
+  background: #064b8b !important;
+}
+
+a:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+
+a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.drop-container {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px dashed #555;
+  color: #444;
+  cursor: pointer;
+  transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.drop-container:hover {
+  background: #eee;
+  border-color: #111;
+}
+
+.drop-container:hover .drop-title {
+  color: #222;
+}
+
+.drop-title {
+  color: #444;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  transition: color .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #084cdf;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+  background: #0d45a5;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.collapsible {
+  overflow: hidden;
+}
+
+section {
+  width: 360px;
+  background-color: lightgray;
+  font: 16px/20px sans-serif;
+  box-sizing: border-box;
+}
+
+section.collapsible {
+  color: white;
+  background-color: coral;
+}
+
+p {
+    margin: 0;
+    padding: 15px;
+}
+
+aside {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+button {
+  font-size: 16px;
+  border: none;
+  background: #2196F3;
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

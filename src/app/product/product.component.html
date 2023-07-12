@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<nz-header class="{{'header' | className: 'M' }}" (window:resize)="onResize($event)" (scroll)="onScroll()" [ngClass]="headerfixed?'fixed':'nofixed'">
+  <nav>
+    <div style="display: flex;">
+      <a class="button" href="">
+        <fa-icon [icon]="faHome" [ngStyle]="{ color: 'pink'}">
+        </fa-icon>
+        Homepage
+      </a>
+      <div class="text" style="margin-left:5px; margin-right: 5px; color: pink;">|</div>
+      <a class="button" href="https://www.google.com/">
+        <fa-icon [icon]="faMagnifyingGlass" [ngStyle]="{ color: 'pink'}">
+        </fa-icon>
+        Search nhung pro hon
+      </a>
+    </div>
+  </nav>
+  <div class="{{'header-left' | className: 'M' }}">
+    <!-- <span class="{{'header-left-switch' | className: 'M' }}" [nzPopoverContent]="menuAppPopover"
+      nzPopoverOverlayClassName="{{'header-popover' | className: 'M' }}" [nzPopoverVisible]="visibleValue.APP_RIGHT"
+      nzPopoverPlacement="bottomLeft" nzType="text" nz-button nz-popover
+      [nzPopoverOverlayStyle]="{'margin-top': '10px','margin-left': '-15px','min-width': '280px'}"> -->
+    <!-- <svg [outerHTML]="'switch-app'| svgIcon: {class: 'icon',style: { width: '16px', height: '16px' }}"></svg> -->
+    <!-- </span> -->
+    <a class="{{'header-left-logo' | className: 'M' }}" routerLink="dashboard/default">
+      <!-- <img style="height: 20px" [src]="'/assets/images/logo/logo.svg' | assetUrl" /> -->
+      <ng-container *ngIf="!smallHeader">
+        <div class="{{'header-left-logo-text' | className: 'M' }}">
+          <span class="text text-bold text-size-14">
+            {{titleApp}}
+          </span>
+        </div>
+      </ng-container>
+    </a>
+  </div>
+  <!-- <div class="{{'header-right' | className: 'M' }}"> -->
+    <!-- <div class="{{'header-right-search' | className: 'M' }}">
+      <nz-input-group [nzPrefix]="iconSearch" class="{{'header-right-search-input' | className: 'M' }}">
+        <input type="text" nz-input placeholder="Search some thing..." />
+      </nz-input-group>
+      <ng-template #iconSearch>
+        <span class="{{'header-right-search-icon' | className: 'M' }}">
+          <svg [outerHTML]="'search'| svgIcon: {class: 'icon',style: { width: '12px', height: '12px' }}"></svg>
+        </span>
+      </ng-template>
+    </div> -->
+    <!-- <div class="{{'header-right-language' | className: 'M' }}">
+      <button class="{{'header-right-language-btn' | className: 'M' }}" nzType="text" nz-button nz-popover
+        [nzPopoverContent]="templateChangeLanguage" [nzPopoverTrigger]="'click'" nzPopoverPlacement="bottomRight"
+        nzPopoverOverlayClassName="{{'header-popover' | className: 'M' }}" [nzPopoverOverlayStyle]="{
+          'margin-top': '5px',
+          'margin-right': '0px',
+          width: '240px'
+        }">
+        <span class="{{'header-right-language-btn-icon' | className: 'M' }}" [innerHtml]="change"></span>
+      </button>
+    </div> -->
+    <!-- <div class="{{'header-right-notification'  | className: 'M' }}">
+      <nz-badge nzDot [nzOffset]="[-5, 5]">
+        <span nz-icon class="{{'header-right-notification-icon' | className: 'M' }}">
+          <svg [outerHTML]="'bell'| svgIcon: {class: 'icon',style: { width: '25px', height: '25px' }}"></svg>
+        </span>
+      </nz-badge>
+    </div> -->
+  <!-- </div> -->
+</nz-header>
+<ng-template #menuAppPopover>
+  <!-- <div>
+    <span class="text text-bold">{{ "LAYOUT.CHANGE_APP" | translate }}</span>
+    <span class="text text-bold">{{"CMM BEO"}}</span>
+  </div>
+  <ng-container [ngTemplateOutlet]="appsTemplate"></ng-container> -->
+</ng-template>
+
+<ng-template #appsTemplate>
+  <ng-container [ngTemplateOutlet]="changeTheme"></ng-container>
+</ng-template>
+
+<ng-template #changeTheme>
+  <!-- //Doi ngon ngu
+  <span class="text text-bold">{{ "LAYOUT.CHANGE_THEME" | translate }}</span>
+  <span class="text text-bold">{{ "LAYOUT.CHANGE_THEME" | translate }}</span>
+  <div style="display: flex; padding: 10px 0;">
+    <nz-radio-group [(ngModel)]="themePicked" (ngModelChange)="onChangeTheme(themePicked)">
+      <label nz-radio [nzValue]="item.theme" *ngFor="let item of themeOption" [ngClass]="item.class"></label>
+    </nz-radio-group>
+  </div> -->
+</ng-template>
+<body>
+<div class="container">
+  <app-search (onSearch)="getBySearch($event)"></app-search>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th id="id">Id</th>
+        <th id="name">Name</th>
+        <th id="file">File</th>
+        <th id="action">
+          <app-btn-popup-add-item (onAddProduct)="addProduct($event)" color="gray" text="Add">
+          </app-btn-popup-add-item>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let product of products">
+        <tr>
+          <td>{{product.id}}</td>
+          <td>{{product.productName}}</td>
+          <td class="collapsible" [@collapse]="collapsed"><img src="{{product.productFile}}"></td>
+          <td style="text-align: right">
+            <button *ngIf="collapsed" (click)="expand(product?.id ?? 00)">Expand</button>
+            <button *ngIf="!collapsed" (click)="collapse(product?.id ?? 00)">Collapse</button>
+          </td>
+          <td style="text-align: right">
+            <app-btn-delete-product-item style="cursor: pointer;" [product]="product?.id ?? 00" (onDeleteProduct)="deleteProduct(product?.id ?? 0)"></app-btn-delete-product-item></td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
