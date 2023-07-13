@@ -11,7 +11,7 @@ export class ProductService {
 
   productFile: any;
 
-  private apiUrl = 'http://localhost:8080/';
+  private apiUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {}
 
@@ -24,21 +24,26 @@ export class ProductService {
   }
 
   getProducts() {
-    return this.http.get<Product[]>(this.apiUrl + 'get-all');
+    return this.http.get<Product[]>(this.apiUrl + '/get-all');
   }
 
   deleteProduct(product: number): Observable<any> {
-    const url = `${this.apiUrl}delete/${product}`;
+    const url = `${this.apiUrl}/delete/${product}`;
     return this.http.post<any>(url, product);
   }
 
   addProduct(product: string): Observable<any> {
-    const url = `${this.apiUrl}add`;
+    const url = `${this.apiUrl}/add`;
     return this.http.post<any>(url, product);
   }
 
   search(keyword: string): Observable<any> {
-    const url = `${this.apiUrl}search`;
+    const url = `${this.apiUrl}/search`;
     return this.http.post<any>(url, { ['keyword']: keyword });
+  }
+
+  adjustQty(id: number, qty: number): Observable<any> {
+    const url = `${this.apiUrl}/update-qty`;
+    return this.http.post<any>(url, { ['id']: id, ['qty']: qty });
   }
 }

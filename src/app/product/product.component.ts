@@ -13,6 +13,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-product',
@@ -45,6 +46,7 @@ export class ProductComponent {
   faList = faList;
   faPlus = faPlus;
   faMinus = faMinus;
+  faUpload = faUpload;
 
   @Input() titleApp = '';
 
@@ -145,6 +147,14 @@ export class ProductComponent {
       default:
         break;
     }
+  }
+
+  adjustQty(id: number, qty: number) {
+    this.service.adjustQty(id, qty).subscribe((e) => {
+      setTimeout(() => {
+        this.getAll();
+      }, 2000);
+    });
   }
 
   changeTheme(theme: any, classDOM: any) {

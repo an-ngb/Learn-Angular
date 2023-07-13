@@ -139,6 +139,10 @@
                       <fa-icon [icon]="faPlus">
                       </fa-icon>
                     </Button>
+                    <Button (click)="adjustQty(product?.id ?? 0, products[i].productQty)" class="btn btn-primary" style="margin: auto;">
+                      <fa-icon [icon]="faUpload" [ngStyle]="{ color: 'pink'}">
+                      </fa-icon>
+                    </Button>
                   </h4>
                   <h4>Product Picture:</h4>
                   <img style="margin-top: 5px;" src="{{product.productFile}}">
