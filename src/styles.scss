@@ -209,14 +209,35 @@ aside {
     right: 8px;
 }
 
-button {
-  font-size: 16px;
-  border: none;
-  background: #2196F3;
-  color: white;
-  padding: 10px 15px;
-  cursor: pointer;
+// button {
+//   font-size: 16px;
+//   border: none;
+//   background: #2196F3;
+//   color: white;
+//   padding: 10px 15px;
+//   cursor: pointer;
+// }
+
+#wrapper {
+	margin: auto;
 }
 
+.cropper-wrapper {
+  width: 95px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  transition: all 1s ease-in-out;
+}
+
+.isCollapsed {
+  width: 100%;
+  display: inline-block;
+}
+
+nz-header{
+  z-index: 9999;
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

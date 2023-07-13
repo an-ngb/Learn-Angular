@@ -104,7 +104,7 @@
       <tr>
         <th id="id">Id</th>
         <th id="name">Name</th>
-        <th id="file">File</th>
+        <th id="file" style="text-align: center;">Description</th>
         <th id="action">
           <app-btn-popup-add-item (onAddProduct)="addProduct($event)" color="gray" text="Add">
           </app-btn-popup-add-item>
@@ -112,14 +112,23 @@
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let product of products">
-        <tr>
+      <ng-container *ngFor="let product of products, let i = index">
+        <tr id="wrapper">
           <td>{{product.id}}</td>
           <td>{{product.productName}}</td>
-          <td class="collapsible" [@collapse]="collapsed"><img src="{{product.productFile}}"></td>
-          <td style="text-align: right">
-            <button *ngIf="collapsed" (click)="expand(product?.id ?? 00)">Expand</button>
-            <button *ngIf="!collapsed" (click)="collapse(product?.id ?? 00)">Collapse</button>
+          <td style="text-align: center;">
+            <fa-icon cButton (click)="toggleCollapse(i)" [icon]="faList" style="cursor: pointer;"></fa-icon>
+            <!-- <button  cButton class="btn" style="margin-bottom: 8px;">+</button> -->
+            <nz-modal [(nzVisible)]="product.isExpanded" nzTitle="Product Info"  [nzFooter]=null (nzOnCancel)="handleCancel(i)" (nzOnOk)="handleCancel(i)" nzKeyboard="true">
+              <ng-container *nzModalContent>
+                <h4>Product ID: {{product.id}}</h4>
+                <h4>Product Name: {{product.productName}}</h4>
+                <h4>Product Qty: {{product?.productQty ?? 0}}</h4>
+                <Button (click)="plus(i)" class="btn">+</Button>
+                <Button (click)="minus(i)" class="btn">-</Button>
+                <h4>Product Picture:<img style="margin-top: 5px;" src="{{product.productFile}}"></h4>
+              </ng-container>
+            </nz-modal>
           </td>
           <td style="text-align: right">
             <app-btn-delete-product-item style="cursor: pointer;" [product]="product?.id ?? 00" (onDeleteProduct)="deleteProduct(product?.id ?? 0)"></app-btn-delete-product-item></td>

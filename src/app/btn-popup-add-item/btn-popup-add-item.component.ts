@@ -20,7 +20,11 @@ export class BtnPopupAddItemComponent {
 
   isVisible = false;
 
+  isOkLoading = false;
+
   input?: string;
+
+  qty?: number;
 
   form!: FormGroup;
 
@@ -31,7 +35,8 @@ export class BtnPopupAddItemComponent {
 
   ngOnInit(){
     this.form = this.fb.group({
-      input: [null, [Validators.required]]
+      input: [null, [Validators.required]],
+      qty: [null, [Validators.required]]
     })
   }
 
@@ -40,8 +45,6 @@ export class BtnPopupAddItemComponent {
   }
 
   getProductFileLink(event: any){
-    console.log(event);
-
     this.productFile = event;
   }
 
@@ -53,14 +56,21 @@ export class BtnPopupAddItemComponent {
 
     const newProduct = {
       productName: this.form.controls['input'].value,
+      productQty: this.form.controls['qty'].value,
       productFile: this.productFile,
+      isExpanded: false
     }
 
     this.onAddProduct.emit(newProduct);
 
-    this.form.controls['input'].setValue('');
 
-    this.isVisible = false;
+    this.isOkLoading = true;
+
+    setTimeout(() => {
+      this.form.controls['input'].setValue('');
+      this.isVisible = false;
+      this.isOkLoading = false;
+    }, 2000);
   }
 
   handleCancel(): void {

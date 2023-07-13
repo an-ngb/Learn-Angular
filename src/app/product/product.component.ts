@@ -4,29 +4,12 @@ import { Product } from '../Product';
 import { THEME_OPTION } from '../layout.enum';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import {
-  AUTO_STYLE,
-  animate,
-  state,
-  style,
-  transition,
-  trigger
-} from '@angular/animations';
-
-const DEFAULT_DURATION = 300;
+import { faList } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
-  animations: [
-    trigger('collapse', [
-      state('false', style({ height: AUTO_STYLE, visibility: AUTO_STYLE })),
-      state('true', style({ height: '0', visibility: 'hidden' })),
-      transition('false => true', animate(DEFAULT_DURATION + 'ms ease-in')),
-      transition('true => false', animate(DEFAULT_DURATION + 'ms ease-out'))
-    ])
-  ]
 })
 
 export class ProductComponent  {
@@ -51,6 +34,7 @@ export class ProductComponent  {
 
   faHome = faHome;
   faMagnifyingGlass = faMagnifyingGlass;
+  faList = faList;
 
   @Input() titleApp = "";
 
@@ -58,11 +42,17 @@ export class ProductComponent  {
 
   smallHeader: boolean = false;
 
+  flag: boolean = false;
+
+  isVisible = false;
+
   constructor(private service:ProductService) {
 
   }
 
-  flag: boolean = false;
+  toggleCollapse(id: number): void {
+    this.products[id].isExpanded = !this.products[id].isExpanded;
+  }
 
   @HostListener('window:scroll',['$event']) onScroll(){
     if(window.scrollY > 100)
@@ -75,24 +65,7 @@ export class ProductComponent  {
     }
   }
 
-  toggle() {
-    this.collapsed = !this.collapsed;
-  }
-
-  expand(id: number) {
-    this.products[id].isExpanded = true;
-    this.collapsed = false;
-  }
-
-  collapse(id: number) {
-    this.products[id].isExpanded = false;
-    this.collapsed = true;
-  }
-
   ngOnInit(){
-    this.products.forEach((product) => {
-      product.isExpanded = false;
-    });
     this.service.getProducts().subscribe({
       next: (res: any) => {
         if (res?.data?.length > 0){
@@ -148,8 +121,26 @@ export class ProductComponent  {
 
   addProduct(product: any){
     this.service.addProduct(product).subscribe(e => {
-      this.getAll();
+      setTimeout(() => {
+        this.getAll();
+      }, 2000);
     })
+  }
+
+  plus(id: number) {
+    this.products[id].productQty = this.products[id]?.productQty ?? 0 + 1;
+    console.log('Value of num1 after increment ', this.products[id].productQty);
+    console.log('num plus11', this.products[id].productQty);
+  }
+
+  minus(id: number) {
+    this.products[id].productQty = this.products[id]?.productQty ?? 0 - 1;
+    console.log('Value of num1 after decr ', this.products[id].productQty);
+    if (this.products[id].productQty === 0) {
+      console.log('disable');
+    } else {
+      console.log('num minus', this.products[id].productQty);
+    }
   }
 
   changeTheme(theme: any, classDOM: any) {
@@ -199,20 +190,7 @@ export class ProductComponent  {
     }
   }
 
-  async getBase64ImageFromUrl(imageUrl: string ) {
-    const res = await fetch(imageUrl);
-    const blob = await res.blob();
-
-    return new Promise((resolve, reject) => {
-      const reader  = new FileReader();
-      reader.addEventListener("load", function () {
-          resolve(reader.result);
-      }, false);
-
-      reader.onerror = () => {
-        return reject(this);
-      };
-      reader.readAsDataURL(blob);
-    })
+  handleCancel(i: number): void {
+    this.products[i].isExpanded = false;
   }
 }

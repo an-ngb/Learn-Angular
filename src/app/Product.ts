@@ -2,5 +2,6 @@ export interface Product{
   id?: number;
   productName?: string;
   productFile?: string;
-  isExpanded?: boolean;
+  productQty?: number;
+  isExpanded: boolean;
 }

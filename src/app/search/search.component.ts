@@ -20,10 +20,10 @@ export class SearchComponent {
 
   search(): void {
     console.log(this.form.controls['input'].value);
-    if(this.form.invalid){
-      alert('Please write down a product name.');
-      return;
-    }
+    // if(this.form.invalid){
+    //   alert('Please write down a product name.');
+    //   return;
+    // }
     this.onSearch.emit(this.form.controls['input'].value);
   }
 

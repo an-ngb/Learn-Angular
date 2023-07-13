@@ -24,6 +24,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { ClassNamePipe } from './class-name.pipe';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { CardModule } from '@coreui/angular';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
     BtnDeleteProductItemComponent,
     BtnPopupAddItemComponent,
     ClassNamePipe,
-    FileUploadComponent
+    FileUploadComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +54,8 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
     MdbCollapseModule,
     NzPopoverModule,
     NzLayoutModule,
-    NzUploadModule
+    NzUploadModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
