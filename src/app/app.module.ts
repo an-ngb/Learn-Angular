@@ -26,6 +26,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { CardModule } from '@coreui/angular';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzAffixModule } from 'ng-zorro-antd/affix';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     NzUploadModule,
     CardModule,
     NzTableModule,
+    NzAffixModule
   ],
   providers: [],
   bootstrap: [AppComponent],

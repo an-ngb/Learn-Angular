@@ -13,7 +13,6 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
-import { NzTableModule } from 'ng-zorro-antd/table';
 
 @Component({
   selector: 'app-product',
@@ -31,7 +30,7 @@ export class ProductComponent {
 
   themePicked: string = '';
 
-  headerfixed: boolean = false;
+  // headerfixed: boolean = false;
 
   size = window.innerWidth;
 
@@ -63,13 +62,13 @@ export class ProductComponent {
     this.products[id].isExpanded = !this.products[id].isExpanded;
   }
 
-  @HostListener('window:scroll', ['$event']) onScroll() {
-    if (window.scrollY > 100) {
-      this.headerfixed = true;
-    } else {
-      this.headerfixed = false;
-    }
-  }
+  // @HostListener('window:scroll', ['$event']) onScroll() {
+  //   if (window.scrollY > 100) {
+  //     this.headerfixed = true;
+  //   } else {
+  //     this.headerfixed = false;
+  //   }
+  // }
 
   ngOnInit() {
     this.service.getProducts().subscribe({
