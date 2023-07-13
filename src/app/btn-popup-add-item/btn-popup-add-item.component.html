@@ -1,13 +1,15 @@
 <button nz-button class="btn btn-primary" (click)="showModal()"><span>Add</span></button>
-<nz-modal [(nzVisible)]="isVisible" nzTitle="Add new item" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" [nzOkLoading]="isOkLoading" nzCancelText="Cancel" nzOkText="Save" nzKeyboard="true">
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Add new item" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+  [nzOkLoading]="isOkLoading" nzCancelText="Cancel" nzOkText="Save" nzKeyboard="true">
   <ng-container *nzModalContent>
     <form nz-form [formGroup]="form" class="add-form">
       <div class="form-group">
-        <input formControlName="input" class="form-control" type="text" name="productName" id="productName" placeholder="Type product name here."/>
-        <input formControlName="qty" class="form-control" type="text" name="productQty" id="productQty" style="margin-top: 10px;" placeholder="Define its qty."/>
+        <input formControlName="input" class="form-control" type="text" name="productName" id="productName"
+          placeholder="Type product name here." />
+        <input formControlName="qty" class="form-control" type="text" name="productQty" id="productQty"
+          style="margin-top: 10px;" placeholder="Define its qty." />
         <app-file-upload (productFile)="getProductFileLink($event)"></app-file-upload>
       </div>
     </form>
   </ng-container>
 </nz-modal>
-

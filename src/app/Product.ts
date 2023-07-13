@@ -1,7 +1,7 @@
-export interface Product{
+export interface Product {
   id?: number;
   productName?: string;
   productFile?: string;
-  productQty?: number;
+  productQty: number;
   isExpanded: boolean;
 }

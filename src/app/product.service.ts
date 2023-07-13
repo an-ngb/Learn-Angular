@@ -4,17 +4,16 @@ import { Product } from './Product';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
-
   productFileLink: EventEmitter<any> = new EventEmitter();
 
   productFile: any;
 
-  private apiUrl = 'http://localhost:8080/'
+  private apiUrl = 'http://localhost:8080/';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   get data(): any {
     return this.productFile;
@@ -24,22 +23,22 @@ export class ProductService {
     this.productFile.emit(val);
   }
 
-  getProducts(){
+  getProducts() {
     return this.http.get<Product[]>(this.apiUrl + 'get-all');
   }
 
-  deleteProduct(product: number): Observable<any>{
+  deleteProduct(product: number): Observable<any> {
     const url = `${this.apiUrl}delete/${product}`;
     return this.http.post<any>(url, product);
   }
 
-  addProduct(product: string): Observable<any>{
+  addProduct(product: string): Observable<any> {
     const url = `${this.apiUrl}add`;
     return this.http.post<any>(url, product);
   }
 
-  search(keyword: string): Observable<any>{
+  search(keyword: string): Observable<any> {
     const url = `${this.apiUrl}search`;
-    return this.http.post<any>(url,{['keyword']: keyword});
+    return this.http.post<any>(url, { ['keyword']: keyword });
   }
 }

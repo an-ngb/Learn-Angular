@@ -2,10 +2,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { CLASS_NAME } from '../app/layout.enum';
 
 @Pipe({
-  name: 'className'
+  name: 'className',
 })
 export class ClassNamePipe implements PipeTransform {
-
   /**
    * Transform to class name
    * @param value any
@@ -24,15 +23,14 @@ export class ClassNamePipe implements PipeTransform {
         break;
       case 'B':
         break;
-      default: break;
+      default:
+        break;
     }
-    if (!value)
-      return null;
+    if (!value) return null;
     return `${CLASS_NAME}${_eleText}${value}`;
     /// loy_header_left, loy_header_left-collapse, loy_header_left-expand
     /// loy_header_right
     /// loy_header-blue
     /// loy_header-blue
   }
-
 }

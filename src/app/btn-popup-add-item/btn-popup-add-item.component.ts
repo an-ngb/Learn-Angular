@@ -6,10 +6,9 @@ import { ProductService } from '../product.service';
 @Component({
   selector: 'app-btn-popup-add-item',
   templateUrl: './btn-popup-add-item.component.html',
-  styleUrls: ['./btn-popup-add-item.component.scss']
+  styleUrls: ['./btn-popup-add-item.component.scss'],
 })
 export class BtnPopupAddItemComponent {
-
   @Output() onAddProduct: EventEmitter<Product> = new EventEmitter();
 
   products: Product[] = [];
@@ -28,28 +27,25 @@ export class BtnPopupAddItemComponent {
 
   form!: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private service: ProductService
-  ) {}
+  constructor(private fb: FormBuilder, private service: ProductService) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.form = this.fb.group({
       input: [null, [Validators.required]],
-      qty: [null, [Validators.required]]
-    })
+      qty: [null, [Validators.required]],
+    });
   }
 
   showModal(): void {
     this.isVisible = true;
   }
 
-  getProductFileLink(event: any){
+  getProductFileLink(event: any) {
     this.productFile = event;
   }
 
   handleOk(): void {
-    if(this.form.invalid){
+    if (this.form.invalid) {
       alert('Please write down a product name.');
       return;
     }
@@ -58,16 +54,16 @@ export class BtnPopupAddItemComponent {
       productName: this.form.controls['input'].value,
       productQty: this.form.controls['qty'].value,
       productFile: this.productFile,
-      isExpanded: false
-    }
+      isExpanded: false,
+    };
 
     this.onAddProduct.emit(newProduct);
-
 
     this.isOkLoading = true;
 
     setTimeout(() => {
       this.form.controls['input'].setValue('');
+      this.form.controls['qty'].setValue('');
       this.isVisible = false;
       this.isOkLoading = false;
     }, 2000);
@@ -75,6 +71,7 @@ export class BtnPopupAddItemComponent {
 
   handleCancel(): void {
     this.form.controls['input'].setValue('');
+    this.form.controls['qty'].setValue('');
     this.isVisible = false;
   }
 }

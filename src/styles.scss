@@ -40,7 +40,7 @@ body {
   transform: scale(0.98);
 }
 
-.add-form{
+.add-form {
   margin-bottom: 40px;
 }
 
@@ -88,18 +88,18 @@ table td:last-child {
   justify-content: flex-end;
 }
 
-.search-form{
+.search-form {
   margin-bottom: 40px;
 }
 
-.upload-result-form{
+.upload-result-form {
   margin-bottom: 40px;
 }
 
 .ant-layout-header {
   height: 64px;
   padding: 0 50px;
-  color: rgba(0,0,0,.85);
+  color: rgba(0, 0, 0, 0.85);
   line-height: 64px;
   background: #064b8b !important;
 }
@@ -109,7 +109,6 @@ a:link {
   background-color: transparent;
   text-decoration: none;
 }
-
 
 a:visited {
   color: pink;
@@ -142,7 +141,7 @@ a:active {
   border: 2px dashed #555;
   color: #444;
   cursor: pointer;
-  transition: background .2s ease-in-out, border .2s ease-in-out;
+  transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
 }
 
 .drop-container:hover {
@@ -159,10 +158,10 @@ a:active {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  transition: color .2s ease-in-out;
+  transition: color 0.2s ease-in-out;
 }
 
-input[type=file]::file-selector-button {
+input[type="file"]::file-selector-button {
   margin-right: 20px;
   border: none;
   background: #084cdf;
@@ -170,10 +169,10 @@ input[type=file]::file-selector-button {
   border-radius: 10px;
   color: #fff;
   cursor: pointer;
-  transition: background .2s ease-in-out;
+  transition: background 0.2s ease-in-out;
 }
 
-input[type=file]::file-selector-button:hover {
+input[type="file"]::file-selector-button:hover {
   background: #0d45a5;
 }
 
@@ -199,14 +198,14 @@ section.collapsible {
 }
 
 p {
-    margin: 0;
-    padding: 15px;
+  margin: 0;
+  padding: 15px;
 }
 
 aside {
-    position: absolute;
-    top: 8px;
-    right: 8px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
 
 // button {
@@ -219,7 +218,7 @@ aside {
 // }
 
 #wrapper {
-	margin: auto;
+  margin: auto;
 }
 
 .cropper-wrapper {
@@ -236,8 +235,14 @@ aside {
   display: inline-block;
 }
 
-nz-header{
+nz-header {
   z-index: 9999;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

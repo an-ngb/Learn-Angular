@@ -7,10 +7,9 @@ import { ProductService } from '../product.service';
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
-  styleUrls: ['./file-upload.component.scss']
+  styleUrls: ['./file-upload.component.scss'],
 })
-export class FileUploadComponent implements OnInit  {
-
+export class FileUploadComponent implements OnInit {
   form!: FormGroup;
 
   @Output() productFile = new EventEmitter<string>();
@@ -20,20 +19,22 @@ export class FileUploadComponent implements OnInit  {
   show: boolean = true;
 
   // Variable to store shortLink from api response
-  shortLink: string = "";
+  shortLink: string = '';
   loading: boolean = false; // Flag variable
   file!: File; // Variable to store file
 
   ngOnInit(): void {}
 
-  constructor(private fb: FormBuilder,
-    private fileUploadService: FileUploadService) { }
+  constructor(
+    private fb: FormBuilder,
+    private fileUploadService: FileUploadService
+  ) {}
 
   // On file Select
   onChange(event: any) {
-      this.file = event.file;
-      this.show = false;
-      this.shortLink = event.file.response.imageUrl;
-      this.productFile.emit(this.shortLink);
+    this.file = event.file;
+    this.show = false;
+    this.shortLink = event.file.response.imageUrl;
+    this.productFile.emit(this.shortLink);
   }
 }

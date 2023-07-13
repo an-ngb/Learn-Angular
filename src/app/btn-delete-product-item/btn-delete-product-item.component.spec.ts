@@ -8,7 +8,7 @@ describe('BtnDeleteProductItemComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BtnDeleteProductItemComponent]
+      declarations: [BtnDeleteProductItemComponent],
     });
     fixture = TestBed.createComponent(BtnDeleteProductItemComponent);
     component = fixture.componentInstance;

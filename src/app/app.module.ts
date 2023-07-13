@@ -11,13 +11,13 @@ import { SearchComponent } from './search/search.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { BtnDeleteProductItemComponent } from './btn-delete-product-item/btn-delete-product-item.component';
 import { BtnPopupAddItemComponent } from './btn-popup-add-item/btn-popup-add-item.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import {MatDialogModule} from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {NzFormModule} from 'ng-zorro-antd/form';
+import { NzFormModule } from 'ng-zorro-antd/form';
 import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
@@ -25,6 +25,7 @@ import { ClassNamePipe } from './class-name.pipe';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { CardModule } from '@coreui/angular';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 @NgModule({
   declarations: [
@@ -55,9 +56,10 @@ import { CardModule } from '@coreui/angular';
     NzPopoverModule,
     NzLayoutModule,
     NzUploadModule,
-    CardModule
+    CardModule,
+    NzTableModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

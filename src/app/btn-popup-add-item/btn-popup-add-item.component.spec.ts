@@ -8,7 +8,7 @@ describe('BtnPopupAddItemComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BtnPopupAddItemComponent]
+      declarations: [BtnPopupAddItemComponent],
     });
     fixture = TestBed.createComponent(BtnPopupAddItemComponent);
     component = fixture.componentInstance;

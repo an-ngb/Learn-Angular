@@ -6,10 +6,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent {
-
   faMagnifyingGlass = faMagnifyingGlass;
 
   form!: FormGroup;
@@ -27,14 +26,11 @@ export class SearchComponent {
     this.onSearch.emit(this.form.controls['input'].value);
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.form = this.fb.group({
-      input: [null, [Validators.required]]
-    })
+      input: [null, [Validators.required]],
+    });
   }
 
-  constructor(
-    private fb: FormBuilder,
-    private service: ProductService
-  ) {}
+  constructor(private fb: FormBuilder, private service: ProductService) {}
 }
