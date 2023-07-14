@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FileUploadService } from '../file-upload.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faFilePen } from '@fortawesome/free-solid-svg-icons';
-import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-file-upload',
@@ -17,6 +16,8 @@ export class FileUploadComponent implements OnInit {
   faFilePen = faFilePen;
 
   show: boolean = true;
+
+  showBtn: boolean = true;
 
   // Variable to store shortLink from api response
   shortLink: string = '';
@@ -34,6 +35,11 @@ export class FileUploadComponent implements OnInit {
   onChange(event: any) {
     this.file = event.file;
     this.show = false;
+    if (event.type === 'success' || event.type === 'progress' || event.type === 'start') {
+      this.showBtn = false;
+    } else if (event.type === 'removed') {
+      this.showBtn = true;
+    }
     this.shortLink = event.file.response.imageUrl;
     this.productFile.emit(this.shortLink);
   }

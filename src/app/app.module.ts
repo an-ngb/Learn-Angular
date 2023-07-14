@@ -27,6 +27,7 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { CardModule } from '@coreui/angular';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzAffixModule } from 'ng-zorro-antd/affix';
+import { MatIconModule } from '@angular/material/icon'
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { NzAffixModule } from 'ng-zorro-antd/affix';
     NzUploadModule,
     CardModule,
     NzTableModule,
-    NzAffixModule
+    NzAffixModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent],

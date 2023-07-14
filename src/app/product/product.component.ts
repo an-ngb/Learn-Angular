@@ -111,11 +111,12 @@ export class ProductComponent {
   getBySearch(productName: any) {
     this.service.search(productName).subscribe({
       next: (res: any) => {
-        if (res?.length > 0) {
-          this.products = res;
-        } else {
-          alert('Deo thay gi het.');
-        }
+        this.products = res;
+        // if (res?.length > 0) {
+
+        // } else {
+        //   alert('Deo thay gi het.');
+        // }
       },
       error: (err) => {
         console.log(err);

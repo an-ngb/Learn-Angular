@@ -11,16 +11,15 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <nz-affix [nzOffsetTop]="0">
-  <nz-header class="{{'header' | className: 'M' }}" (window:resize)="onResize($event)"
-    style="z-index: 9999;">
+  <nz-header class="{{'header' | className: 'M' }}" (window:resize)="onResize($event)">
     <nav>
-      <div style="display: flex;">
+      <div style="display: flex; justify-content: space-between;">
         <a class="button" href="">
           <fa-icon [icon]="faHome" [ngStyle]="{ color: 'pink'}">
           </fa-icon>
           Homepage
         </a>
-        <div class="text" style="margin-left:5px; margin-right: 5px; color: pink;">|</div>
+        <!-- <div class="text" style="margin-left:5px; margin-right: 5px; color: pink;">|</div> -->
         <a class="button" href="https://www.google.com/">
           <fa-icon [icon]="faMagnifyingGlass" [ngStyle]="{ color: 'pink'}">
           </fa-icon>
@@ -104,6 +103,7 @@
 <body>
   <div class="container">
     <app-search (onSearch)="getBySearch($event)"></app-search>
+    <iframe style="margin-left: 25%;" width="560" height="315" src="https://www.youtube.com/embed/u1rAhWX3lU8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -127,24 +127,24 @@
               <nz-modal [(nzVisible)]="product.isExpanded" nzTitle="Product Info" [nzFooter]=null
                 (nzOnCancel)="handleCancel(i)" nzKeyboard="true">
                 <ng-container *nzModalContent>
-                  <h4>Product ID: {{product.id}}</h4>
-                  <h4>Product Name: {{product.productName}}</h4>
-                  <h4>Product Qty:
-                    <Button (click)="handleOnClick('decrease', i)" class="btn btn-primary">
+                  <h3>Product ID: {{product.id}}</h3>
+                  <h3>Product Name: {{product.productName}}</h3>
+                  <h3>Product Qty:
+                    <Button (click)="handleOnClick('decrease', i)" class="btn">
                       <fa-icon [icon]="faMinus">
                       </fa-icon>
                     </Button>
                     {{product?.productQty ?? 0}}
-                    <Button (click)="handleOnClick('plus', i)" class="btn btn-primary">
+                    <Button (click)="handleOnClick('plus', i)" class="btn">
                       <fa-icon [icon]="faPlus">
                       </fa-icon>
                     </Button>
-                    <Button (click)="adjustQty(product?.id ?? 0, products[i].productQty)" class="btn btn-primary" style="margin: auto;">
-                      <fa-icon [icon]="faUpload" [ngStyle]="{ color: 'pink'}">
-                      </fa-icon>
+                    <Button (click)="adjustQty(product?.id ?? 0, products[i].productQty)" class="btn" style="margin: auto;">
+                      Update Qty
                     </Button>
-                  </h4>
-                  <h4>Product Picture:</h4>
+                  </h3>
+                  <h3>Product Price: {{product.productPrice}}</h3>
+                  <h3>Product Picture:</h3>
                   <img style="margin-top: 5px;" src="{{product.productFile}}">
                 </ng-container>
               </nz-modal>

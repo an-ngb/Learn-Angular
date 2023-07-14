@@ -33,6 +33,7 @@ export class BtnPopupAddItemComponent {
     this.form = this.fb.group({
       input: [null, [Validators.required]],
       qty: [null, [Validators.required]],
+      price: [null, [Validators.required]],
     });
   }
 
@@ -45,8 +46,16 @@ export class BtnPopupAddItemComponent {
   }
 
   handleOk(): void {
-    if (this.form.invalid) {
+    if (this.form.controls['input'].invalid) {
       alert('Please write down a product name.');
+      return;
+    }
+    if (this.form.controls['qty'].invalid) {
+      alert('Please write down a product qty.');
+      return;
+    }
+    if (this.form.controls['price'].invalid) {
+      alert('Please write down a product price.');
       return;
     }
 
@@ -55,6 +64,7 @@ export class BtnPopupAddItemComponent {
       productQty: this.form.controls['qty'].value,
       productFile: this.productFile,
       isExpanded: false,
+      productPrice: this.form.controls['price'].value,
     };
 
     this.onAddProduct.emit(newProduct);
@@ -64,6 +74,7 @@ export class BtnPopupAddItemComponent {
     setTimeout(() => {
       this.form.controls['input'].setValue('');
       this.form.controls['qty'].setValue('');
+      this.form.controls['price'].setValue('');
       this.isVisible = false;
       this.isOkLoading = false;
     }, 2000);
@@ -72,6 +83,7 @@ export class BtnPopupAddItemComponent {
   handleCancel(): void {
     this.form.controls['input'].setValue('');
     this.form.controls['qty'].setValue('');
+    this.form.controls['price'].setValue('');
     this.isVisible = false;
   }
 }

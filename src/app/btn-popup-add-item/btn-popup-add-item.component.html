@@ -8,6 +8,8 @@
           placeholder="Type product name here." />
         <input formControlName="qty" class="form-control" type="text" name="productQty" id="productQty"
           style="margin-top: 10px;" placeholder="Define its qty." />
+        <input formControlName="price" class="form-control" type="text" name="productPrice" id="productPrice"
+          style="margin-top: 10px;" placeholder="Define its price." />
         <app-file-upload (productFile)="getProductFileLink($event)"></app-file-upload>
       </div>
     </form>

@@ -1,5 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap');
 @import "node_modules/ng-zorro-antd/ng-zorro-antd.min.css";
+@import 'material-icons/iconfont/material-icons.scss';
 
 * {
   box-sizing: border-box;
@@ -12,7 +13,6 @@ body {
 }
 
 .container {
-  max-width: 500px;
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
@@ -237,6 +237,11 @@ aside {
 
 nz-header {
   z-index: 9999;
+}
+
+.btn {
+  background: transparent;
+  border: 1px solid steelblue;
 }
 
 html,

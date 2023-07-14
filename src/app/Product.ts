@@ -4,4 +4,5 @@ export interface Product {
   productFile?: string;
   productQty: number;
   isExpanded: boolean;
+  productPrice: number;
 }
